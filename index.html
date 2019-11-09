@@ -23,33 +23,35 @@
                     <div class="card">
                         <div class="card-header">Form register</div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputFirstname">Firstname</label>
-                                <input type="text" class="form-control" name="inputFirstname" id="inputFirstname">
-                                <span id="alertLabelFirstname"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputLastname">Lastname</label>
-                                <input type="text" class="form-control" name="inputLastname" id="inputLastname">
-                                <span id="alertLabelLastname"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputGender">Gender</label>
-                                <select class="form-control" name="inputGender" id="inputGender">
-                                    <option value="" selected>Please select</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                                <span id="alertLabelGender"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputLastname">Address</label>
-                                <textarea class="form-control" name="inputAddress" id="inputAddress" rows="3"></textarea>
-                                <span id="alertLabelAddress"></span>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-info btn-confirm" id="btn-confirm">SUBMIT</button>
-                            </div>
+                            <form name="myForm">
+                                <div class="form-group">
+                                    <label for="inputFirstname">Firstname</label>
+                                    <input type="text" class="form-control" name="inputFirstname" id="inputFirstname">
+                                    <span id="alertLabelinputFirstname"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputLastname">Lastname</label>
+                                    <input type="text" class="form-control" name="inputLastname" id="inputLastname">
+                                    <span id="alertLabelinputLastname"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputGender">Gender</label>
+                                    <select class="form-control" name="inputGender" id="inputGender">
+                                        <option value="" selected disabled>Please select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                    <span id="alertLabelinputGender"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Address</label>
+                                    <textarea class="form-control" name="inputAddress" id="inputAddress" rows="3"></textarea>
+                                    <span id="alertLabelinputAddress"></span>
+                                </div>
+                                <div class="form-group">
+                                    <a class="btn btn-info" id="btn-confirm">SUBMIT</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -63,10 +65,10 @@
 
         function validate() {
             // set default empty alert
-            document.getElementById("alertLabelFirstname").innerHTML = "";
-            document.getElementById("inputLastname").innerHTML = "";
-            document.getElementById("inputGender").innerHTML = "";
-            document.getElementById("inputAddress").innerHTML = "";
+            document.getElementById("alertLabelinputFirstname").innerHTML = "";
+            document.getElementById("alertLabelinputLastname").innerHTML = "";
+            document.getElementById("alertLabelinputGender").innerHTML = "";
+            document.getElementById("alertLabelinputAddress").innerHTML = "";
 
             // get element by name
             fname = document.getElementsByName("inputFirstname")[0].value;
@@ -76,26 +78,44 @@
 
             // check value
             if (fname == "" || fname == null) {
-                document.getElementById("alertLabelFirstname").innerHTML = "Please input";
-                document.getElementById("alertLabelFirstname").style.color = "red";
+                document.getElementById("alertLabelinputFirstname").innerHTML = "Please input";
+                document.getElementById("alertLabelinputFirstname").style.color = "red";
             }
 
             if (lname == "" || lname == null) {
-                document.getElementById("alertLabelLastname").innerHTML = "Please input";
-                document.getElementById("alertLabelLastname").style.color = "red";
+                document.getElementById("alertLabelinputLastname").innerHTML = "Please input";
+                document.getElementById("alertLabelinputLastname").style.color = "red";
             }
 
             if (gender == "" || gender == null) {
-                document.getElementById("alertLabelGender").innerHTML = "Please select";
-                document.getElementById("alertLabelGender").style.color = "red";
+                document.getElementById("alertLabelinputGender").innerHTML = "Please select";
+                document.getElementById("alertLabelinputGender").style.color = "red";
             }
 
             if (address == "" || address == null) {
-                document.getElementById("alertLabelAddress").innerHTML = "Please input";
-                document.getElementById("alertLabelAddress").style.color = "red";
+                document.getElementById("alertLabelinputAddress").innerHTML = "Please input";
+                document.getElementById("alertLabelinputAddress").style.color = "red";
             }
         }
 
+
+        // When click on input
+        document.getElementById("inputFirstname").addEventListener("focus", function() {
+            document.getElementById("alertLabelinputFirstname").innerHTML = "";
+        });
+
+        document.getElementById("inputLastname").addEventListener("focus", function() {
+            document.getElementById("alertLabelinputLastname").innerHTML = "";
+        });
+
+        document.getElementById("inputGender").addEventListener("focus", function() {
+            document.getElementById("alertLabelinputGender").innerHTML = "";
+        });
+
+        document.getElementById("inputAddress").addEventListener("focus", function() {
+            document.getElementById("alertLabelinputAddress").innerHTML = "";
+        });
+        
     </script>
 </body>
 </html>
