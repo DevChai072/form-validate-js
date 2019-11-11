@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form validate</title>
+    <!-- cdn css bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        section { padding-top: 5rem; }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <section>
+            <div class="row justify-content-md-center">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">Form register</div>
+                        <div class="card-body">
+                            
+                            <div class="form-group">
+                                <label for="input-email">Email</label>
+                                <input id="input-email" class="form-control" type="text" name="inputEmail">
+                                <span id="alert-label-email"></span>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="input-phone">Phone</label>
+                                <input id="input-phone" class="form-control" type="text" name="inputPhone">
+                                <span id="alert-label-phone"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-info" id="btn-confirm">SUBMIT</button>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+
+    <script>
+        
+        document.getElementById("btn-confirm").addEventListener("click", formatValidate);
+        function formatValidate() {
+            // check format email
+            input_email = document.getElementById("input-email").value;
+            emailStr = input_email.trim();
+            const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (emailStr.match(emailFormat)) {
+                // true
+            } else {
+                document.getElementById("alert-label-email").innerHTML = "Email is wrong !";
+                document.getElementById("alert-label-email").style.color = "red";
+            }
+
+            // check format phone number
+            input_phone = document.getElementById("input-phone").value;
+            phoneStr = input_phone.trim();
+            // set format for number {000-000-0000}
+
+            const phoneFormat = /^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+            if (phoneStr.match(phoneFormat)) {
+                // 
+            } else {
+                document.getElementById("alert-label-phone").innerHTML = "Phone is wrong !";
+                document.getElementById("alert-label-phone").style.color = "red";
+            }
+        }
+
+    </script>
+</body>
+</html>
